@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Social Search</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="hottness.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+ $(document).ready(function() {
+ $("#searchBut").click(function(s) {
+  var criteria = $("#inp_search").val();
+  console.log(criteria);
+  s.preventDefault();
+  var typeSelection = $('#selection_section input:radio:checked').val();
+  var urlSelection = "";
+  	console.log(typeSelection);
+    if (typeSelection == "option4") {
+    		urlSelection += "&type=link";
+    }
+    else if (typeSelection == "option3") {
+    		urlSelection += "&type=status";
+    }
+    else if (typeSelection == "option2") {
+		urlSelection += "&type=photo";
+    }
+    else if (typeSelection == "option1") {
+    		urlSelection += "&type=video";
+    }
+    console.log(urlSelection);
+    var searchUrl = "https://api.social-searcher.com/v2/search?";
+    var searchKey = "&key=68d11843740fdc436b8a7c036af4f2c9";
+    var searchLimit = "&limit=5";
+    searchUrl += "q="+criteria;
+    searchUrl += urlSelection;
+    searchUrl += searchLimit;
+    searchUrl += "&lang=en";
+    searchUrl += searchKey;
+    console.log(searchUrl);
+  $.ajax({
+   url : searchUrl,
+   dataType : "json",
+   success : function(data) {
+   console.log(data);
+   }
+  }); 
+  });
+  });
+</script>
+
+</head>
+<body>
+<h1 id="entry_txt" class="display-3">Social Search<br>
+<small class="text-muted">Scowering social media one search at a time.</small>
+</h1>
+<hr>
+<br>
+<p id="request" class="lead">
+What type of social media would you like to search?
+<br><small class="text-muted">Please only select one.</small>
+</p>
+<div id="selection_section">
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox1" value="option1"> Videos
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="option2"> Photos
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="option3"> Status
+  </label>
+</div>
+<div class="form-check form-check-inline">
+<label class="form-check-label">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox4" value="option4"> Links
+</label>
+</div>
+<div class="form-check form-check-inline">
+<label class="form-check-label">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox5" value="option5" checked> All
+</label>
+</div>
+</div>
+<div id="address_form" class="form">
+<label for="inp_search">What would you like to look for?</label>
+<input type="text" class="form-control" id="inp_search" aria-describedby="searchhelp" placeholder="Insert keyword(s) here.">
+<br>
+<button id="searchBut" type="submit" class="btn btn-outline-primary">Submit</button>
+</div>
+<!--google geocoder api key: AIzaSyDqV6ohNvq0xMoK38HezW9Uy1QvOejmEoI--!>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

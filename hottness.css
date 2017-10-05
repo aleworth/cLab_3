@@ -1,0 +1,24 @@
+#entry_txt {
+  text-align: center;
+  color: DodgerBlue;
+  padding: 20px 0px 0px 0px;
+  
+  
+}
+
+#searchBut {
+  color: DodgerBlue;
+}
+
+#address_form {  
+  width: 50%;
+  padding: 10px 20px 10px 20px;
+}
+
+#selection_section {
+  padding: 10px 20px 10px 20px;
+}
+
+#request {
+  padding: 10px 20px 10px 20px;
+}
