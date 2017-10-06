@@ -9,7 +9,16 @@
 <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script>
  $(document).ready(function() {
+	$("searchResults").hide();
+});
+</script>
+<script>
+ var sCount = 0;
+ $(document).ready(function() {
  $("#searchBut").click(function(s) {
+  sCount++;
+  var countMess = "You have searched for " + sCount + " different thing(s)."
+  $("#sCounter").html(countMess);
   var criteria = $("#inp_search").val();
   console.log(criteria);
   s.preventDefault();
@@ -31,7 +40,7 @@
     console.log(urlSelection);
     var searchUrl = "https://api.social-searcher.com/v2/search?";
     var searchKey = "&key=68d11843740fdc436b8a7c036af4f2c9";
-    var searchLimit = "&limit=5";
+    var searchLimit = "&limit=6";
     searchUrl += "q="+criteria;
     searchUrl += urlSelection;
     searchUrl += searchLimit;
@@ -41,8 +50,177 @@
   $.ajax({
    url : searchUrl,
    dataType : "json",
-   success : function(data) {
-   console.log(data);
+   success : function(parsed_json) {
+	<!--console.log(data);--!>
+   $("searchResults").show();
+   var result1_text = parsed_json['posts']['0']['text'];
+   var result1_net = parsed_json['posts']['0']['network'];
+   var result1_img = "";
+   if (result1_net == "twitter") {
+	result1_img = "https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png";
+}
+   else if (result1_net == "facebook") {
+	result1_img = "http://daxonconstruction.com/wp-content/uploads/2015/01/facebook-logo-png-transparent-background-300x300.png";
+}
+   else if (result1_net == "youtube") {
+	result1_img = "https://upload.wikimedia.org/wikipedia/commons/b/b2/YouTube_logo_%282013-2015%29.png";
+}
+   else if (result1_net == "instagram") {
+	result1_img = "https://img.clipartfest.com/2111258584-instagram-new-2016-logo-D9D42A0AD4-seeklogo.com.png";
+}
+ else if (result1_net == "googleplus") {
+	result1_img = "http://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png";
+}
+   else {
+	result1_img = "https://img.clipartxtras.com/963e6b01c3035e83cfb0bf0c5470099c_magnifying-glass-clipart-transparent-background-clipart-panda-free-clipart-of-magnifying-glass_300-300.png";
+}
+   var result1_image = "<img class=\"card-img-top\" src=\""+result1_img+"\" alt=\"Card image cap\">";
+   var result1_url = parsed_json['posts']['0']['url'];
+   var result1_urlz = "<a href=\""+result1_url+"\">Check out Result 1</a>";
+   $("#result1_T").html(result1_text);
+   $("#result1_I").html(result1_image);
+   $("#result1_but").html(result1_urlz);
+ 
+var result2_text = parsed_json['posts']['1']['text'];
+   var result2_net = parsed_json['posts']['1']['network'];
+   var result2_img = "";
+   if (result2_net == "twitter") {
+	result2_img = "https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png";
+}
+   else if (result2_net == "facebook") {
+	result2_img = "http://daxonconstruction.com/wp-content/uploads/2015/01/facebook-logo-png-transparent-background-300x300.png";
+}
+   else if (result2_net == "youtube") {
+	result2_img = "https://upload.wikimedia.org/wikipedia/commons/b/b2/YouTube_logo_%282013-2015%29.png";
+}
+   else if (result2_net == "instagram") {
+	result2_img = "https://img.clipartfest.com/2111258584-instagram-new-2016-logo-D9D42A0AD4-seeklogo.com.png";
+}
+else if (result2_net == "googleplus") {
+	result2_img = "http://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png";
+}
+   else {
+	result2_img = "https://img.clipartxtras.com/963e6b01c3035e83cfb0bf0c5470099c_magnifying-glass-clipart-transparent-background-clipart-panda-free-clipart-of-magnifying-glass_300-300.png";
+}
+   var result2_image = "<img class=\"card-img-top\" src=\""+result2_img+"\" alt=\"Card image cap\">";
+   var result2_url = parsed_json['posts']['1']['url'];
+   var result2_urlz = "<a href=\""+result2_url+"\">Check out Result 2</a>";
+   $("#result2_T").html(result2_text);
+   $("#result2_I").html(result2_image);
+   $("#result2_but").html(result2_urlz);
+
+var result3_text = parsed_json['posts']['2']['text'];
+   var result3_net = parsed_json['posts']['2']['network'];
+   var result3_img = "";
+   if (result3_net == "twitter") {
+	result3_img = "https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png";
+}
+   else if (result3_net == "facebook") {
+	result3_img = "http://daxonconstruction.com/wp-content/uploads/2015/01/facebook-logo-png-transparent-background-300x300.png";
+}
+   else if (result3_net == "youtube") {
+	result3_img = "https://upload.wikimedia.org/wikipedia/commons/b/b2/YouTube_logo_%282013-2015%29.png";
+}
+   else if (result3_net == "instagram") {
+	result3_img = "https://img.clipartfest.com/2111258584-instagram-new-2016-logo-D9D42A0AD4-seeklogo.com.png";
+}
+else if (result3_net == "googleplus") {
+	result3_img = "http://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png";
+}
+   else {
+	result3_img = "https://img.clipartxtras.com/963e6b01c3035e83cfb0bf0c5470099c_magnifying-glass-clipart-transparent-background-clipart-panda-free-clipart-of-magnifying-glass_300-300.png";
+}
+   var result3_image = "<img class=\"card-img-top\" src=\""+result3_img+"\" alt=\"Card image cap\">";
+   var result3_url = parsed_json['posts']['2']['url'];
+   var result3_urlz = "<a href=\""+result3_url+"\">Check out Result 3</a>";
+   $("#result3_T").html(result3_text);
+   $("#result3_I").html(result3_image);
+   $("#result3_but").html(result3_urlz);
+
+var result4_text = parsed_json['posts']['3']['text'];
+   var result4_net = parsed_json['posts']['3']['network'];
+   var result4_img = "";
+   if (result4_net == "twitter") {
+	result4_img = "https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png";
+}
+   else if (result4_net == "facebook") {
+	result4_img = "http://daxonconstruction.com/wp-content/uploads/2015/01/facebook-logo-png-transparent-background-300x300.png";
+}
+   else if (result4_net == "youtube") {
+	result4_img = "https://upload.wikimedia.org/wikipedia/commons/b/b2/YouTube_logo_%282013-2015%29.png";
+}
+   else if (result4_net == "instagram") {
+	result4_img = "https://img.clipartfest.com/2111258584-instagram-new-2016-logo-D9D42A0AD4-seeklogo.com.png";
+}
+else if (result4_net == "googleplus") {
+	result4_img = "http://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png";
+}
+   else {
+	result4_img = "https://img.clipartxtras.com/963e6b01c3035e83cfb0bf0c5470099c_magnifying-glass-clipart-transparent-background-clipart-panda-free-clipart-of-magnifying-glass_300-300.png";
+}
+   var result4_image = "<img class=\"card-img-top\" src=\""+result4_img+"\" alt=\"Card image cap\">";
+   var result4_url = parsed_json['posts']['3']['url'];
+   var result4_urlz = "<a href=\""+result4_url+"\">Check out Result 4</a>";
+   $("#result4_T").html(result4_text);
+   $("#result4_I").html(result4_image);
+   $("#result4_but").html(result4_urlz);
+
+var result5_text = parsed_json['posts']['4']['text'];
+   var result5_net = parsed_json['posts']['4']['network'];
+   var result5_img = "";
+   if (result5_net == "twitter") {
+	result5_img = "https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png";
+}
+   else if (result5_net == "facebook") {
+	result5_img = "http://daxonconstruction.com/wp-content/uploads/2015/01/facebook-logo-png-transparent-background-300x300.png";
+}
+   else if (result5_net == "youtube") {
+	result5_img = "https://upload.wikimedia.org/wikipedia/commons/b/b2/YouTube_logo_%282013-2015%29.png";
+}
+   else if (result5_net == "instagram") {
+	result5_img = "https://img.clipartfest.com/2111258584-instagram-new-2016-logo-D9D42A0AD4-seeklogo.com.png";
+}
+else if (result5_net == "googleplus") {
+	result5_img = "http://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png";
+}
+   else {
+	result5_img = "https://img.clipartxtras.com/963e6b01c3035e83cfb0bf0c5470099c_magnifying-glass-clipart-transparent-background-clipart-panda-free-clipart-of-magnifying-glass_300-300.png";
+}
+   var result5_image = "<img class=\"card-img-top\" src=\""+result5_img+"\" alt=\"Card image cap\">";
+   var result5_url = parsed_json['posts']['4']['url'];
+   var result5_urlz = "<a href=\""+result5_url+"\">Check out Result 5</a>";
+   $("#result5_T").html(result5_text);
+   $("#result5_I").html(result5_image);
+   $("#result5_but").html(result5_urlz);
+
+var result6_text = parsed_json['posts']['5']['text'];
+   var result6_net = parsed_json['posts']['5']['network'];
+   var result6_img = "";
+   if (result6_net == "twitter") {
+	result6_img = "https://seeklogo.com/images/T/twitter-2012-negative-logo-5C6C1F1521-seeklogo.com.png";
+}
+   else if (result6_net == "facebook") {
+	result6_img = "http://daxonconstruction.com/wp-content/uploads/2015/01/facebook-logo-png-transparent-background-300x300.png";
+}
+   else if (result6_net == "youtube") {
+	result6_img = "https://upload.wikimedia.org/wikipedia/commons/b/b2/YouTube_logo_%282013-2015%29.png";
+}
+   else if (result6_net == "instagram") {
+	result6_img = "https://img.clipartfest.com/2111258584-instagram-new-2016-logo-D9D42A0AD4-seeklogo.com.png";
+}
+else if (result6_net == "googleplus") {
+	result6_img = "http://www.freeiconspng.com/uploads/google-plus-da-qualche-giorno-ha-un-nuovo-logo-per-incontrare-il--14.png";
+}
+   else {
+	result6_img = "https://img.clipartxtras.com/963e6b01c3035e83cfb0bf0c5470099c_magnifying-glass-clipart-transparent-background-clipart-panda-free-clipart-of-magnifying-glass_300-300.png";
+}
+   var result6_image = "<img class=\"card-img-top\" src=\""+result6_img+"\" alt=\"Card image cap\">";
+   var result6_url = parsed_json['posts']['5']['url'];
+   var result6_urlz = "<a href=\""+result6_url+"\">Check out Result 6</a>";
+   $("#result6_T").html(result6_text);
+   $("#result6_I").html(result6_image);
+   $("#result6_but").html(result6_urlz);
+
    }
   }); 
   });
@@ -91,7 +269,71 @@ What type of social media would you like to search?
 <label for="inp_search">What would you like to look for?</label>
 <input type="text" class="form-control" id="inp_search" aria-describedby="searchhelp" placeholder="Insert keyword(s) here.">
 <br>
-<button id="searchBut" type="submit" class="btn btn-outline-primary">Submit</button>
+<button id="searchBut" type="submit" class="btn btn-outline-primary">Submit</button><div id="sCounter"></div>
+</div>
+<div id="mainBody" class="container">
+<div id="searchResults" class="row">
+<div id="resultBox" class="col-sm">
+<div id="result1" class="card card-inline" style="width: 20rem;">
+  <div id="result1_I"></div>
+  <div class="card-body">
+    <h4 id="result1_H" class="card-title">Result 1</h4>
+    <p id = "result1_T" class="card-text"></p>
+    <button id="result1_but" class="btn btn-outline-primary"></a>
+  </div>
+</div>
+</div>
+<div id="resultBox" class="col-sm">
+<div id="result2" class="card card-inline" style="width: 20rem;">
+  <div id="result2_I"></div>
+  <div class="card-body">
+    <h4 id="result2_H" class="card-title">Result 2</h4>
+    <p id = "result2_T" class="card-text"></p>
+    <button id="result2_but" class="btn btn-outline-primary"></a>
+  </div>
+</div>
+</div>
+<div id="resultBox" class="col-sm">
+<div id="result3" class="card card-inline" style="width: 20rem;">
+  <div id="result3_I"></div>
+  <div class="card-body">
+    <h4 id="result3_H" class="card-title">Result 3</h4>
+    <p id = "result3_T" class="card-text"></p>
+    <button id="result3_but" class="btn btn-outline-primary"></a>
+  </div>
+</div>
+</div>
+<div id="resultBox" class="col-sm">
+<div id="result4" class="card card-inline" style="width: 20rem;">
+  <div id="result4_I"></div>
+  <div class="card-body">
+    <h4 id="result4_H" class="card-title">Result 4</h4>
+    <p id = "result4_T" class="card-text"></p>
+    <button id="result4_but" class="btn btn-outline-primary"></a>
+  </div>
+</div>
+</div>
+<div id="resultBox" class="col-sm">
+<div id="result5" class="card card-inline" style="width: 20rem;">
+  <div id="result5_I"></div>
+  <div class="card-body">
+    <h4 id="result5_H" class="card-title">Result 5</h4>
+    <p id = "result5_T" class="card-text"></p>
+    <button id="result5_but" class="btn btn-outline-primary"></a>
+  </div>
+</div>
+</div>
+<div id="resultBox" class="col-sm">
+<div id="result6" class="card card-inline" style="width: 20rem;">
+  <div id="result6_I"></div>
+  <div class="card-body">
+    <h4 id="result6_H" class="card-title">Result 6</h4>
+    <p id = "result6_T" class="card-text"></p>
+    <button id="result6_but" class="btn btn-outline-primary"></a>
+  </div>
+</div>
+</div>
+</div>
 </div>
 <!--google geocoder api key: AIzaSyDqV6ohNvq0xMoK38HezW9Uy1QvOejmEoI--!>
 

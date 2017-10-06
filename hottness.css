@@ -1,7 +1,7 @@
 #entry_txt {
   text-align: center;
   color: DodgerBlue;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 5px 0px 5px;
   
   
 }
@@ -21,4 +21,13 @@
 
 #request {
   padding: 10px 20px 10px 20px;
+}
+
+#searchResults {
+  padding: 10px 20px 10px 20px;
+  text-align: center; 
+}
+
+#resultBox {
+  padding: 5px 5px 5px 5px;
 }
